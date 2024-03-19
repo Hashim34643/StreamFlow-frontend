@@ -29,27 +29,27 @@ const SignUpForm = () => {
         <form className='signup-form' onSubmit={handleSubmit}>
             <h2>Sign-Up</h2>
             <div className="form-group">
-                <label htmlFor='username'>Username</label>
+                <label htmlFor='username'>Username:</label>
                 <input type="text" id='username' name='username' value={formData.username} onChange={handleChange}/>
             </div>
             <div className="form-group">
-                <label htmlFor='firstName'>First Name</label>
+                <label htmlFor='firstName'>First Name:</label>
                 <input type="text" id='firstName' name='firstName' value={formData.firstName} onChange={handleChange}/>
             </div>
             <div className="form-group">
-                <label htmlFor='lastName'>Last Name</label>
+                <label htmlFor='lastName'>Last Name:</label>
                 <input type="text" id='lastName' name='lastName' value={formData.lastName} onChange={handleChange}/>
             </div>
             <div className="form-group">
-                <label htmlFor='email'>Email</label>
+                <label htmlFor='email'>Email:</label>
                 <input type="email" id='email' name='email' value={formData.email} onChange={handleChange}/>
             </div>
             <div className="form-group">
-                <label htmlFor='password'>Password</label>
+                <label htmlFor='password'>Password:</label>
                 <input type="password" id='password' name='password' value={formData.password} onChange={handleChange}/>
             </div>
             <div className="form-group">
-                <label htmlFor='confirmPassword'>Confirm Password</label>
+                <label htmlFor='confirmPassword'>Confirm Password:</label>
                 <input type="password" id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange}/>
             </div>
             <div className="form-group">

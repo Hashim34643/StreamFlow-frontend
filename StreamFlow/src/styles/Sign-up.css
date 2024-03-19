@@ -1,11 +1,24 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, darkblue, pink);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
 .signup-form-container {
     max-width: 400px;
-    margin: auto;
+    margin: 100px auto;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+    padding: 50px;
 }
 
 .signup-form h2 {
@@ -15,11 +28,13 @@
 
 .form-group {
     margin-bottom: 15px;
+    margin-right: 20px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 5px;
+    color: #4a4a4a;
 }
 
 .form-group input[type="text"],
@@ -29,10 +44,12 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.form-group input[type="checked"] {
-    margin-right: 5px;
+.form-group input[type="checkbox"] {
+    margin-right: 50px;
+    cursor: pointer;
 }
 
 .submit-btn {

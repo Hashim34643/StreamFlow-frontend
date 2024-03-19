@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import './App.css'
+import SignUpForm from './Sign-up'
 
 function App() {
 
   return (
     <>
+    <SignUpForm />
     </>
   )
 }

@@ -52,11 +52,11 @@ const SignUpForm = () => {
                     <label htmlFor='confirmPassword'>Confirm Password:</label>
                     <input type="password" id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} />
                 </div>
-                <div className="form-group">
+                <div className="form-group switch-container">
                     <span>Streamer?</span>
-                    <label for="isStreamer" class="switch">
-                        <input type="checkbox" id="isStreamer" name="isStreamer" />
-                        <span class="slider round"></span>
+                    <label className="switch">
+                        <input type="checkbox" id="isStreamer" name="isStreamer" checked={formData.isStreamer} onChange={handleChange} />
+                        <span className="slider round"></span>
                     </label>
                 </div>
                 <button type='submit' className='submit-btn'>Sign Up</button>

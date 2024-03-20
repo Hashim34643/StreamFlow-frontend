@@ -66,11 +66,19 @@ body {
     background-color: #0056b3;
 }
 
+.switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .switch {
+    text-align: center;
     position: relative;
+    transform: translateX(5px) translateY(2px);
     display: inline-block;
-    width: 40px;
-    height: 20px;
+    width: 36px;
+    height: 18px;
   }
   
   .switch input { 
@@ -95,8 +103,8 @@ body {
   .slider:before {
     position: absolute;
     content: "";
-    height: 16px;
-    width: 16px;
+    height: 14px;
+    width: 14px;
     left: 2px;
     bottom: 2px;
     background-color: white;
@@ -114,8 +122,8 @@ body {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
   }
   

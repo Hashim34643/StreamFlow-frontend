@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import "./styles/Sign-up.css"
 
 const SignUpForm = () => {
@@ -23,7 +23,14 @@ const SignUpForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log("success");
-    }
+    };
+
+    useEffect(() => {
+        document.body.style.background = 'linear-gradient(135deg, darkblue, pink)';
+            return () => {
+          document.body.style.backgroundColor = '';
+        };
+      }, []);
     return (
         <div className='signup-form-container'>
             <form className='signup-form' onSubmit={handleSubmit}>

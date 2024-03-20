@@ -5,7 +5,6 @@ html, body {
 }
 
 body {
-    background: linear-gradient(135deg, darkblue, pink);
     min-height: 100vh;
     overflow: hidden;
 }

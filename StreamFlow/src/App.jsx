@@ -1,11 +1,16 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUpForm from './Sign-up'
 
 function App() {
 
   return (
     <>
-    <SignUpForm />
+      <Router>
+        <Routes>
+          <Route path="/sign-up" element={<SignUpForm />} />
+        </Routes>
+      </Router>
     </>
   )
 }

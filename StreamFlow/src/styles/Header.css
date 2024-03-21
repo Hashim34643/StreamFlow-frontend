@@ -15,12 +15,24 @@
     padding: 10px;
   }
   
+  .navbar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
   .navbar ul {
     list-style-type: none;
     display: flex;
+    margin-left: 20px;
   }
   
   .navbar ul li {
     margin: 0 10px;
   }
+  
+  .profile {
+    margin-left: auto;
+  }
+  
   

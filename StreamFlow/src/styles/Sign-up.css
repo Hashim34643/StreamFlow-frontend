@@ -4,10 +4,14 @@ html, body {
     padding: 0;
 }
 
-body {
-    min-height: 100vh;
-    overflow: hidden;
+.body-sign-up {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
+
 
 .signup-form-container {
     max-width: 400px;
@@ -42,7 +46,7 @@ body {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
@@ -57,7 +61,7 @@ body {
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -126,3 +130,12 @@ body {
     transform: translateX(18px);
   }
   
+  .success-message {
+    color: green;
+    margin-bottom: 25px;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 25px;
+}

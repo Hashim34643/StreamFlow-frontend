@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUpForm from "./components/Sign-up";
 import Home from "./components/Home";
+import LoginForm from "./components/Login";
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sign-up" element={<SignUpForm />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </Router>
     </>

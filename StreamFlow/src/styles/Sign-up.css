@@ -144,3 +144,16 @@ html, body {
   color: red;
   font-size: 0.8rem;
 }
+
+.password-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.toggle-password-visibility {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}

@@ -48,11 +48,12 @@ const SignUpForm = () => {
     };
 
     useEffect(() => {
-        document.body.style.background = 'linear-gradient(135deg, darkblue, pink)';
-            return () => {
-          document.body.style.backgroundColor = '';
+        document.body.classList.add('body-sign-up');
+        return () => {
+            document.body.classList.remove('body-sign-up');
         };
-      }, []);
+    }, []);
+
 
     return (
         <div className='signup-form-container'>
@@ -85,8 +86,11 @@ const SignUpForm = () => {
                     <input type="password" id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} />
                 </div>
                 <div className="form-group switch-container">
-                    <label htmlFor='isStreamer'>Streamer?</label>
-                    <input type="checkbox" id='isStreamer' name='isStreamer' checked={formData.isStreamer} onChange={handleChange} />
+                    <span>Streamer?</span>
+                    <label className="switch">
+                        <input type="checkbox" id="isStreamer" name="isStreamer" checked={formData.isStreamer} onChange={handleChange} />
+                        <span className="slider round"></span>
+                    </label>
                 </div>
                 <button type='submit' className='submit-btn'>Sign Up</button>
             </form>

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "../styles/Login.css";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -30,6 +31,13 @@ const LoginForm = () => {
       setErrorMessage(message);
     }
   };
+  useEffect(() => {
+    document.body.classList.add('body-login');
+    return () => {
+        document.body.classList.remove('body-login');
+    };
+  }, []);
+  
 
   return (
     <div className="login-form-container">

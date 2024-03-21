@@ -11,6 +11,7 @@ const SignUpForm = () => {
         password: '',
         confirmPassword: '',
         isStreamer: false,
+        showPassword: false
     });
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -21,6 +22,10 @@ const SignUpForm = () => {
             ...formData,
             [name]: type === 'checkbox' ? checked : value,
         });
+    };
+
+    const togglePasswordVisibility = () => {
+        setFormData({ ...formData, showPassword: !formData.showPassword });
     };
 
     const handleSubmit = async (e) => {
@@ -79,11 +84,13 @@ const SignUpForm = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor='password'>Password:<span className="required-asterisk">*</span></label>
-                    <input type="password" id='password' name='password' value={formData.password} onChange={handleChange} required />
+                    <input type={formData.showPassword ? 'text' : 'password'} id='password' name='password' value={formData.password} onChange={handleChange} required />
+                    <button onClick={togglePasswordVisibility} type="button">{formData.showPassword ? 'Hide' : 'Show'}</button>
                 </div>
                 <div className="form-group">
                     <label htmlFor='confirmPassword'>Confirm Password:<span className="required-asterisk">*</span></label>
-                    <input type="password" id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} required />
+                    <input type={formData.showPassword ? 'text' : 'password'} id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} required />
+                    <button onClick={togglePasswordVisibility} type="button">{formData.showPassword ? 'Hide' : 'Show'}</button>
                 </div>
 
                 <div className="form-group switch-container">

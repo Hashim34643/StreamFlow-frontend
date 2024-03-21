@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import "../styles/Sign-up.css"
+import { useState, useEffect } from 'react';
+import "../styles/Sign-up.css";
+import axios from 'axios';
 
 const SignUpForm = () => {
     const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ const SignUpForm = () => {
         confirmPassword: '',
         isStreamer: false,
     });
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -22,7 +25,26 @@ const SignUpForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("success");
+        if (!formData.username || !formData.email || !formData.password || formData.password !== formData.confirmPassword) {
+            setErrorMessage('Please fill all required fields and make sure passwords match.');
+            return;
+        }
+
+        try {
+            const response = await axios.post('https://streamflow-backend.onrender.com/create-user', formData);
+            if (response.data.success === true) {
+                setSuccessMessage('Account created successfully! Please login.');
+                setErrorMessage('');
+            } else {
+                throw new Error('Something went wrong');
+            }
+        } catch (error) {
+            const message = error.response && error.response.data && error.response.data.message
+                ? error.response.data.message
+                : 'Failed to create account. Please try again.';
+            setErrorMessage(message);
+            setSuccessMessage('');
+        }
     };
 
     useEffect(() => {
@@ -31,10 +53,13 @@ const SignUpForm = () => {
           document.body.style.backgroundColor = '';
         };
       }, []);
+
     return (
         <div className='signup-form-container'>
             <form className='signup-form' onSubmit={handleSubmit}>
                 <h2>Sign-Up</h2>
+                {successMessage && <div className="success-message">{successMessage}</div>}
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
                 <div className="form-group">
                     <label htmlFor='username'>Username:</label>
                     <input type="text" id='username' name='username' value={formData.username} onChange={handleChange} />
@@ -60,16 +85,13 @@ const SignUpForm = () => {
                     <input type="password" id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} />
                 </div>
                 <div className="form-group switch-container">
-                    <span>Streamer?</span>
-                    <label className="switch">
-                        <input type="checkbox" id="isStreamer" name="isStreamer" checked={formData.isStreamer} onChange={handleChange} />
-                        <span className="slider round"></span>
-                    </label>
+                    <label htmlFor='isStreamer'>Streamer?</label>
+                    <input type="checkbox" id='isStreamer' name='isStreamer' checked={formData.isStreamer} onChange={handleChange} />
                 </div>
                 <button type='submit' className='submit-btn'>Sign Up</button>
             </form>
         </div>
-    )
+    );
 }
 
 export default SignUpForm;

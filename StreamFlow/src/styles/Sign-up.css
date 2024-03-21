@@ -139,3 +139,8 @@ html, body {
     color: red;
     margin-bottom: 25px;
 }
+
+.required-asterisk {
+  color: red;
+  font-size: 0.8rem;
+}

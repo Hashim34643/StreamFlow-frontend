@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import "../styles/Sign-up.css";
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 const SignUpForm = () => {
     const [formData, setFormData] = useState({
@@ -84,13 +86,20 @@ const SignUpForm = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor='password'>Password:<span className="required-asterisk">*</span></label>
+                    <div className="password-container">
                     <input type={formData.showPassword ? 'text' : 'password'} id='password' name='password' value={formData.password} onChange={handleChange} required />
-                    <button onClick={togglePasswordVisibility} type="button">{formData.showPassword ? 'Hide' : 'Show'}</button>
+                    <FontAwesomeIcon
+                        icon={formData.showPassword ? faEyeSlash : faEye}
+                        onClick={togglePasswordVisibility}
+                        className="toggle-password-visibility"
+                    />
+                    </div>
                 </div>
                 <div className="form-group">
                     <label htmlFor='confirmPassword'>Confirm Password:<span className="required-asterisk">*</span></label>
+                    <div className="password-container">
                     <input type={formData.showPassword ? 'text' : 'password'} id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} required />
-                    <button onClick={togglePasswordVisibility} type="button">{formData.showPassword ? 'Hide' : 'Show'}</button>
+                    </div>
                 </div>
 
                 <div className="form-group switch-container">

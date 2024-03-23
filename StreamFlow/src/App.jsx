@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignUpForm from "./components/Sign-up";
 import Home from "./components/Home";
 import LoginForm from "./components/Login";
+import ForgotPassword from './components/Forgot-password';
 
 function App() {
 

@@ -5,7 +5,7 @@ import "../styles/Forgot-password.css";
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-
+    const [isSuccessMessage, setIsSuccessMessage] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,8 +13,10 @@ const ForgotPassword = () => {
         try {
             const response = await axios.post('https://streamflow-backend.onrender.com/forgot-password', { email });
             setMessage(response.data.message);
+            setIsSuccessMessage(true);
         } catch (error) {
             setMessage(error.response?.data?.message || "An error occurred.");
+            setIsSuccessMessage(false);
         }
     };
 
@@ -40,7 +42,7 @@ const ForgotPassword = () => {
                         required
                     />
                 </div>
-                {message && <p className="message">{message}</p>}
+                {message && <div className={isSuccessMessage ? "success-message" : "error-message"}>{message}</div>}
                 <button type="submit" className="submit-btn">Submit</button>
             </form>
         </div>

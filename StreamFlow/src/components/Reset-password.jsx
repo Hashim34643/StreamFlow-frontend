@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import "../styles/Reset-password.css";
 
 const ResetPassword = ({ match }) => {
   const { token } = useParams();
@@ -23,6 +24,13 @@ const ResetPassword = ({ match }) => {
       setMessage(error.response?.data?.message || 'An error occurred');
     }
   };
+
+  useEffect(() => {
+    document.body.classList.add('body-reset-password');
+    return () => {
+        document.body.classList.remove('body-reset-password');
+    };
+}, []);
 
   return (
     <div className="reset-password-container">
@@ -50,8 +58,8 @@ const ResetPassword = ({ match }) => {
             required
           />
         </div>
-        <button type="submit" className="submit-btn">Reset Password</button>
         {message && <p>{message}</p>}
+        <button type="submit" className="submit-btn">Reset Password</button>
       </form>
     </div>
   );

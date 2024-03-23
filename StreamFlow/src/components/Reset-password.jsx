@@ -8,20 +8,23 @@ const ResetPassword = ({ match }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [isSuccessMessage, setIsSuccessMessage] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage('Passwords do not match');
-      return;
+        setMessage("Passwords do not match");
+        setIsSuccessMessage(false);
+        return;
     }
 
     try {
-    
       const response = await axios.post(`https://streamflow-backend.onrender.com/reset-password`, { token, newPassword: password });
       setMessage(response.data.message);
+      setIsSuccessMessage(true);
     } catch (error) {
       setMessage(error.response?.data?.message || 'An error occurred');
+      setIsSuccessMessage(false);
     }
   };
 
@@ -58,7 +61,7 @@ const ResetPassword = ({ match }) => {
             required
           />
         </div>
-        {message && <p>{message}</p>}
+        {message && <div className={isSuccessMessage ? "success-message" : "error-message"}>{message}</div>}
         <button type="submit" className="submit-btn">Reset Password</button>
       </form>
     </div>

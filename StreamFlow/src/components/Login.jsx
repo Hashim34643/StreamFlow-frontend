@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/Login.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -78,6 +78,7 @@ const LoginForm = () => {
                         className="toggle-password-visibility"
                     />
                     </div>
+                    <Link to="/forgot-password" className="forgot-password-link">Forgot Password?</Link>
                 </div>
                 <button type="submit" className="submit-btn">Log In</button>
             </form>

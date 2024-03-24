@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "../styles/Profile.css";
 
 const Profile = () => {
     const [user, setUser] = useState({ followers: [], following: [] });
@@ -19,6 +20,12 @@ const Profile = () => {
         };
 
         fetchUserData();
+
+        document.body.classList.add('body-profile');
+        
+        return () => {
+            document.body.classList.remove('body-profile');
+        };
     }, []);
 
     return (

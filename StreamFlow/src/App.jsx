@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import LoginForm from "./components/Login";
 import ForgotPassword from './components/Forgot-password';
 import ResetPassword from './components/Reset-password';
+import Profile from "./components/Profile";
 
 function App() {
 

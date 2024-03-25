@@ -81,7 +81,9 @@ const EditProfile = () => {
                 <Link to="/" className="home-link">Home</Link>
                 <Link to="/" className="streamflow-title">StreamFlow</Link>
                 <div className="avatar-container">
-                    <img src={user.avatar} alt="User Avatar" className="user-avatar" />
+                    <Link to="/profile">
+                        <img src={user.avatar} alt="User Avatar" className="user-avatar" />
+                    </Link>
                 </div>
             </div>
             <div className="edit-profile-content">

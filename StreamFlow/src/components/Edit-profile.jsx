@@ -80,7 +80,7 @@ const EditProfile = () => {
                 <Link to="/" className="home-link">Home</Link>
                 <span className="streamflow-title">StreamFlow</span>
                 <div className="avatar-container">
-                    <img src={user.avatar} alt="User Avatar" className="user-avatar"/>
+                    <img src={user.avatar} alt="User Avatar" className="user-avatar" />
                 </div>
             </div>
             <div className="edit-profile-content">
@@ -90,29 +90,29 @@ const EditProfile = () => {
                     {errorMessage && <div className="error-message">{errorMessage}</div>}
                     <div className="form-group">
                         <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" name="firstName" value={user.firstName} onChange={handleChange} />
+                        <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" value={user.lastName} onChange={handleChange} />
+                        <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="bio">Bio</label>
-                        <textarea id="bio" name="bio" value={user.bio} onChange={handleChange}></textarea>
+                        <textarea id="bio" name="bio" value={formData.bio} onChange={handleChange}></textarea>
                     </div>
                     <div className="form-group switch-container">
-                    <span>Streamer?</span>
-                    <label className="switch">
-                        <input type="checkbox" id="isStreamer" name="isStreamer" checked={formData.isStreamer} onChange={handleChange} />
-                        <span className="slider round"></span>
-                    </label>
-                </div>
+                        <span>Streamer?</span>
+                        <label className="switch">
+                            <input type="checkbox" id="isStreamer" name="isStreamer" checked={formData.isStreamer} onChange={handleChange} />
+                            <span className="slider round"></span>
+                        </label>
+                    </div>
                     <button type='submit' className='profile-submit-btn'>Update Profile</button>
                 </form>
             </div>
         </div>
     );
-    
+
 };
 
 export default EditProfile;

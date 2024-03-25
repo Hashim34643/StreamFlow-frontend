@@ -47,7 +47,7 @@ const Profile = () => {
                 <Link to="/" className="home-link">Home</Link>
                 <span className="streamflow-title">StreamFlow</span>
                 <div className="avatar-container">
-                    <img src={user.avatar || 'default_avatar.png'} alt="User Avatar" className="user-avatar"/>
+                <img src={user.avatar} alt="User Avatar" className="user-avatar"/>
                 </div>
             </div>
             <div className="profile-content">

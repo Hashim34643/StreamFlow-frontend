@@ -56,7 +56,6 @@ const Profile = () => {
                     <p>Followers: {user.followers.length}</p>
                     <p>Following: {user.following.length}</p>
                     <Link to="/edit-profile" className="edit-profile-link">Edit Profile</Link>
-                    <button onClick={handleLogout} className="logout-btn">Log Out</button>
                 </div>
                 <div className="recent-streams">
                     <h3>Recent Streams</h3>
@@ -66,6 +65,7 @@ const Profile = () => {
                         </div>
                     )) : <p>No recent streams...</p>}
                 </div>
+                    <button onClick={handleLogout} className="logout-btn">Log Out</button>
             </div>
         </div>
     );

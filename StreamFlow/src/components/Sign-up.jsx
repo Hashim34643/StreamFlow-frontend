@@ -101,7 +101,6 @@ const SignUpForm = () => {
                     <input type={formData.showPassword ? 'text' : 'password'} id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} required />
                     </div>
                 </div>
-
                 <div className="form-group switch-container">
                     <span>Streamer?</span>
                     <label className="switch">

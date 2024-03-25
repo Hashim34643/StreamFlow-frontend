@@ -15,6 +15,7 @@ const EditProfile = () => {
     const [loading, setLoading] = useState(true);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.body.classList.add('body-edit-profile');

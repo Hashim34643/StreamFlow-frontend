@@ -15,7 +15,7 @@
 
 .edit-profile-content {
     width: 400px;
-    height: 400px;
+    min-height: 400px;
     margin: 30px auto;
     padding: 20px;
     border: 1px solid #ddd;

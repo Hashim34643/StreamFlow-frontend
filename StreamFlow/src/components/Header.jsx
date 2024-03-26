@@ -7,25 +7,27 @@ const Header = () => {
     const [userAvatar, setUserAvatar] = useState('');
 
     useEffect(() => {
-        const fetchUserAvatar = async () => {
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
-            };
-
-            try {
-                const response = await axios.get('https://streamflow-backend.onrender.com/profile', config);
-                if (response.data.user.avatar) {
-                    setUserAvatar(response.data.user.avatar);
-                }
-            } catch (error) {
-                console.error("Error fetching user's avatar:", error);
-            }
-        };
-
-        fetchUserAvatar();
-    }, []);
+      const fetchUserAvatar = async () => {
+          const config = {
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem('token')}`,
+              },
+          };
+  
+          try {
+              const response = await axios.get('https://streamflow-backend.onrender.com/profile', config);
+              if (response.data.user.avatar) {
+                  const avatarDataUrl = `${response.data.user.avatar}`;
+                  setUserAvatar(avatarDataUrl);
+              }
+          } catch (error) {
+              console.error("Error fetching user's avatar:", error);
+          }
+      };
+  
+      fetchUserAvatar();
+  }, []);
+  
 
     return (
         <header className="header">

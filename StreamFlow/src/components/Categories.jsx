@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './CategoriesPage.css';
+import '../styles/Categories.css';
 
 const CategoriesPage = () => {
     const categories = [

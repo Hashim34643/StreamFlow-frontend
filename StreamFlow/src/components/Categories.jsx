@@ -31,6 +31,7 @@ const CategoriesPage = () => {
         <div>
             <Header />
             <div className="categories-container">
+                <h1 className="categories-title">Select a Category</h1>
                 <div className="grid-container">
                     {categories.map((category, index) => (
                         <div key={index} className="category-card">

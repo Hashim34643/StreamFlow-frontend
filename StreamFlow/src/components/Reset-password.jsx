@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import "../styles/Reset-password.css";
 
 const ResetPassword = ({ match }) => {
@@ -9,6 +9,7 @@ const ResetPassword = ({ match }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
   const [isSuccessMessage, setIsSuccessMessage] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const ResetPassword = ({ match }) => {
     try {
       const response = await axios.post(`https://streamflow-backend.onrender.com/reset-password`, { token, newPassword: password });
       setMessage(response.data.message);
+      setTimeout(() => navigate('/login'), 2000);
       setIsSuccessMessage(true);
     } catch (error) {
       setMessage(error.response?.data?.message || 'An error occurred');

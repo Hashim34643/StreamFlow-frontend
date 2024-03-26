@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 import "../styles/Forgot-password.css";
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isSuccessMessage, setIsSuccessMessage] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,6 +15,7 @@ const ForgotPassword = () => {
         try {
             const response = await axios.post('https://streamflow-backend.onrender.com/forgot-password', { email });
             setMessage(response.data.message);
+            setTimeout(() => navigate('/login'), 3000);
             setIsSuccessMessage(true);
         } catch (error) {
             setMessage(error.response?.data?.message || "An error occurred.");

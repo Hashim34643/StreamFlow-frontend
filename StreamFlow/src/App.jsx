@@ -8,6 +8,7 @@ import ResetPassword from './components/Reset-password';
 import Profile from "./components/Profile";
 import EditProfile from './components/Edit-profile';
 import CategoriesPage from './components/Categories';
+import LiveStreamsPage from './components/Live';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/live" element={<LiveStreamsPage />} />
         </Routes>
       </Router>
     </>

@@ -63,7 +63,7 @@ const EditProfile = () => {
         try {
             const response = await axios.patch(`https://streamflow-backend.onrender.com/update-user/${userId}`, formData, config);
             setSuccessMessage('Profile updated successfully!');
-            setTimeout(() => navigate('/profile'), 3000);
+            setTimeout(() => navigate('/profile'), 2000);
             setErrorMessage('');
         } catch (error) {
             setErrorMessage(error.response?.data?.message || 'Failed to update profile. Please try again.');

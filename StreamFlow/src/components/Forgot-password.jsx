@@ -15,7 +15,7 @@ const ForgotPassword = () => {
         try {
             const response = await axios.post('https://streamflow-backend.onrender.com/forgot-password', { email });
             setMessage(response.data.message);
-            setTimeout(() => navigate('/login'), 3000);
+            setTimeout(() => navigate('/login'), 2000);
             setIsSuccessMessage(true);
         } catch (error) {
             setMessage(error.response?.data?.message || "An error occurred.");

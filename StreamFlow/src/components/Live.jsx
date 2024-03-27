@@ -6,7 +6,7 @@ import "../styles/Live.css";
 
 const Live = () => {
     const [liveStreams, setLiveStreams] = useState([]);
-    
+
     const categoryThumbnails = {
         "Fortnite": "https://www.gamespot.com/a/uploads/screen_kubrick/1352/13527689/3928496-fortnite2022-01-1808-32-56.00_01_08_23.still001.jpg",
         "Minecraft": "https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/60/Survival.png/revision/latest/scale-to-width-down/427?cb=20220702034959",
@@ -40,17 +40,22 @@ const Live = () => {
             <div className="live-streams-container">
                 <h1 className="live-streams-title">Live Streams</h1>
                 <div className="stream-grid">
-                    {liveStreams.map((stream, index) => (
-                        <div key={stream.id || index} className="stream-card">
-                            <img src={categoryThumbnails[stream.category] || 'default_thumbnail.jpg'} alt={`${stream.title} thumbnail`} className="stream-thumbnail" />
-                            <div className="stream-info">
-                                <h2 className="stream-title">{stream.title}</h2>
-                                <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
-                                <Link to={`/stream/${stream.id}`} className="watch-stream-link">Watch Stream</Link>
-                            </div>
-                        </div>
-                    ))}
+    {liveStreams.map((stream, index) => (
+        <div key={stream.id || index} className="stream-card">
+            <img src={categoryThumbnails[stream.category] || 'default_thumbnail.jpg'} alt={`${stream.title} thumbnail`} className="stream-thumbnail" />
+            <div className="stream-info">
+                <div className="streamer-info">
+                    <img src={stream.streamerAvatar || 'default_avatar.jpg'} alt="Streamer Avatar" className="streamer-avatar" />
+                    <span className="streamer-username">{stream.streamerUsername}</span>
                 </div>
+                <h2 className="stream-title">{stream.title}</h2>
+                <span className="stream-category">{stream.category}</span>
+                <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
+                <Link to={`/stream/${stream.id}`} className="watch-stream-link">Watch Stream</Link>
+            </div>
+        </div>
+    ))}
+</div>
             </div>
         </div>
     );

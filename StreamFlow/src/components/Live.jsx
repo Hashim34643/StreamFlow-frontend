@@ -63,9 +63,11 @@ const Live = () => {
                         <div key={stream.id || index} className="stream-card">
                             <img src={categoryThumbnails[stream.category] || 'default_thumbnail.jpg'} alt={`${stream.title} thumbnail`} className="stream-thumbnail" />
                             <div className="stream-info">
+                                <div className="avatar-username">
                                 <img src={user.avatar} alt="Streamer Avatar" className="streamer-avatar" />
                                 <span className="streamer-username">{user.username}</span>
-                                <h2 className="stream-title">{stream.title}</h2>
+                                </div>
+                                <h2 className="stream-title">{stream.streamTitle}</h2>
                                 <div className="stream-category">{stream.category}</div>
                                 <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
                                 <Link to={`/stream/${stream.id}`} className="watch-stream-link">Watch Stream</Link>

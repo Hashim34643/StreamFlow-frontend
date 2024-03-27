@@ -6,6 +6,7 @@ import "../styles/Live.css";
 
 const Live = () => {
     const [liveStreams, setLiveStreams] = useState([]);
+    const [user, setUser] = useState({ avatar: '', username: '' });
 
     const categoryThumbnails = {
         "Fortnite": "https://www.gamespot.com/a/uploads/screen_kubrick/1352/13527689/3928496-fortnite2022-01-1808-32-56.00_01_08_23.still001.jpg",
@@ -27,11 +28,29 @@ const Live = () => {
     };
 
     useEffect(() => {
-        axios.get('https://streamflow-backend.onrender.com/streams')
-            .then(response => {
+        const fetchUserInfo = async () => {
+            try {
+                const config = {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+                };
+                const response = await axios.get('https://streamflow-backend.onrender.com/profile', config);
+                setUser(response.data.user);
+            } catch (error) {
+                console.error("Error fetching user's info:", error);
+            }
+        };
+
+        const fetchLiveStreams = async () => {
+            try {
+                const response = await axios.get('https://streamflow-backend.onrender.com/streams');
                 setLiveStreams(response.data.streams.sort((a, b) => b.currentViewers - a.currentViewers));
-            })
-            .catch(error => console.error("Error fetching live streams:", error));
+            } catch (error) {
+                console.error("Error fetching live streams:", error);
+            }
+        };
+
+        fetchUserInfo();
+        fetchLiveStreams();
     }, []);
 
     return (
@@ -40,22 +59,20 @@ const Live = () => {
             <div className="live-streams-container">
                 <h1 className="live-streams-title">Live Streams</h1>
                 <div className="stream-grid">
-    {liveStreams.map((stream, index) => (
-        <div key={stream.id || index} className="stream-card">
-            <img src={categoryThumbnails[stream.category] || 'default_thumbnail.jpg'} alt={`${stream.title} thumbnail`} className="stream-thumbnail" />
-            <div className="stream-info">
-                <div className="streamer-info">
-                    <img src={stream.streamerAvatar || 'default_avatar.jpg'} alt="Streamer Avatar" className="streamer-avatar" />
-                    <span className="streamer-username">{stream.streamerUsername}</span>
+                    {liveStreams.map((stream, index) => (
+                        <div key={stream.id || index} className="stream-card">
+                            <img src={categoryThumbnails[stream.category] || 'default_thumbnail.jpg'} alt={`${stream.title} thumbnail`} className="stream-thumbnail" />
+                            <div className="stream-info">
+                                <img src={user.avatar} alt="Streamer Avatar" className="streamer-avatar" />
+                                <span className="streamer-username">{user.username}</span>
+                                <h2 className="stream-title">{stream.title}</h2>
+                                <div className="stream-category">{stream.category}</div>
+                                <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
+                                <Link to={`/stream/${stream.id}`} className="watch-stream-link">Watch Stream</Link>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                <h2 className="stream-title">{stream.title}</h2>
-                <span className="stream-category">{stream.category}</span>
-                <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
-                <Link to={`/stream/${stream.id}`} className="watch-stream-link">Watch Stream</Link>
-            </div>
-        </div>
-    ))}
-</div>
             </div>
         </div>
     );

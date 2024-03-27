@@ -8,6 +8,15 @@
 .live-streams-title {
     color: black;
     margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 5px 0;
 }
 
 .stream-grid {

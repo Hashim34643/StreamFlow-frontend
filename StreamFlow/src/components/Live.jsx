@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header';
 import { Link } from 'react-router-dom';
+import "../styles/Live.css";
 
 const Live = () => {
     const [liveStreams, setLiveStreams] = useState([]);

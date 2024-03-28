@@ -101,3 +101,31 @@
     padding: 10px 0;
     border-bottom: 1px solid #eee;
 }
+
+.recent-streams-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.recent-streams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.stream-detail {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    overflow: hidden;
+}
+
+.stream-title,
+.stream-description,
+.stream-category,
+.stream-start-time,
+.stream-duration {
+    margin-bottom: 10px;
+}

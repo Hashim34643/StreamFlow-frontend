@@ -117,3 +117,22 @@
     flex-direction: row;
     align-items: center;
 }
+
+.stream-filter-dropdown {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    margin-bottom: 20px; /* Adjust spacing as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+}
+
+.stream-filter-dropdown:hover {
+    border-color: #007bff; /* Color when hovering */
+}
+
+.stream-filter-dropdown:focus {
+    outline: none;
+    border-color: #0056b3; /* Color when focused */
+}

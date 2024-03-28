@@ -68,7 +68,7 @@ const Live = () => {
             <div className="live-streams-container">
                 <h1 className="live-streams-title">Live Streams</h1>
                 <div className="filter-container">
-                    <select onChange={handleCategoryChange} value={filterCategory}>
+                    <select onChange={handleCategoryChange} value={filterCategory} className="stream-filter-dropdown">
                         {categories.map(category => (
                             <option key={category} value={category}>{category}</option>
                         ))}

@@ -41,7 +41,7 @@ const Live = () => {
                 <div className="stream-grid">
                     {liveStreams.map((stream, index) => (
                         <div key={stream._id || index} className="stream-card">
-                                <div className="avatar-container">
+                                <div className="streamer-info-container">
                                     <img src={stream.streamerAvatar} alt="Streamer Avatar" className="streamer-avatar" />
                                     <p className="streamer-username">{stream.streamerUsername}</p>
                                 </div>

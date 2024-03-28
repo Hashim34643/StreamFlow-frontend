@@ -6,6 +6,27 @@ import '../styles/Live.css';
 
 const Live = () => {
     const [liveStreams, setLiveStreams] = useState([]);
+    const [filterCategory, setFilterCategory] = useState('');
+    const categories = [
+        'All',
+        'Fortnite',
+        'Minecraft',
+        'League of Legends',
+        'Chatting',
+        'In Real Life',
+        'Grand Theft Auto V',
+        'EA Sports FC 24',
+        'Among Us',
+        "Tom Clancys Rainbow Six Siege",
+        'Call Of Duty: Modern Warfare III',
+        'Apex Legends',
+        'Valorant',
+        'Dota 2',
+        'Counter-Strike',
+        'Art',
+        'Education'
+    ];
+    
     const categoryThumbnails = {
         "Fortnite": "https://www.gamespot.com/a/uploads/screen_kubrick/1352/13527689/3928496-fortnite2022-01-1808-32-56.00_01_08_23.still001.jpg",
         "Minecraft": "https://static.wikia.nocookie.net/minecraft_gamepedia/images/6/60/Survival.png/revision/latest/scale-to-width-down/427?cb=20220702034959",
@@ -33,13 +54,28 @@ const Live = () => {
             .catch(error => console.error("Error fetching live streams:", error));
     }, []);
 
+    const handleCategoryChange = e => {
+        const selectedCategory = e.target.value;
+        setFilterCategory(selectedCategory === "All" ? "" : selectedCategory);
+    };
+    
+    const filteredStreams = liveStreams.filter(stream => filterCategory === "" || stream.category === filterCategory);
+    
+    
     return (
         <div>
             <Header />
             <div className="live-streams-container">
                 <h1 className="live-streams-title">Live Streams</h1>
+                <div className="filter-container">
+                    <select onChange={handleCategoryChange} value={filterCategory}>
+                        {categories.map(category => (
+                            <option key={category} value={category}>{category}</option>
+                        ))}
+                    </select>
+                </div>
                 <div className="stream-grid">
-                    {liveStreams.map((stream, index) => (
+                    {filteredStreams.map((stream, index) => (
                         <div key={stream._id || index} className="stream-card">
                                 <div className="streamer-info-container">
                                     <img src={stream.streamerAvatar} alt="Streamer Avatar" className="streamer-avatar" />

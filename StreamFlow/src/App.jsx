@@ -25,6 +25,7 @@ function App() {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/live" element={<LiveStreamsPage />} />
+          <Route path="/live/:category" element={<LiveStreamsPage />} />
         </Routes>
       </Router>
     </>

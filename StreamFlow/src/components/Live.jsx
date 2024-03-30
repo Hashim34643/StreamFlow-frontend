@@ -102,25 +102,31 @@ const Live = () => {
                         ))}
                     </select>
                 </div>
-                <div className="stream-grid">
-                    {filteredStreams.map((stream, index) => (
-                        <div key={stream._id || index} className="stream-card">
-                            <div className="streamer-info-container">
-                                <img src={stream.streamerAvatar} alt="Streamer Avatar" className="streamer-avatar" />
-                                <p className="streamer-username">{stream.streamerUsername}</p>
-                            </div>
-                            <img src={categoryThumbnails[stream.category] || 'default_thumbnail.jpg'} alt={`${stream.title} thumbnail`} className="stream-thumbnail" />
-                            <div className="stream-info">
-                                <h2 className="stream-title">{stream.streamTitle}</h2>
-                                <div className="category-name">{stream.category}</div>
-                                <div className="watch-viewers-count">
-                                    <Link to={`/stream/${stream._id}`} className="watch-stream-link">Watch Stream</Link>
-                                    <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
+                {filteredStreams.length > 0 ? (
+                    <div className="stream-grid">
+                        {filteredStreams.map((stream, index) => (
+                            <div key={stream._id || index} className="stream-card">
+                                <div className="streamer-info-container">
+                                    <img src={stream.streamerAvatar} alt="Streamer Avatar" className="streamer-avatar" />
+                                    <p className="streamer-username">{stream.streamerUsername}</p>
+                                </div>
+                                <img src={categoryThumbnails[stream.category] || 'default_thumbnail.jpg'} alt={`${stream.title} thumbnail`} className="stream-thumbnail" />
+                                <div className="stream-info">
+                                    <h2 className="stream-title">{stream.streamTitle}</h2>
+                                    <div className="category-name">{stream.category}</div>
+                                    <div className="watch-viewers-count">
+                                        <Link to={`/stream/${stream._id}`} className="watch-stream-link">Watch Stream</Link>
+                                        <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="no-streams-message">
+                        <p>There are currently no live streams available. Check back later!</p>
+                    </div>
+                )}
             </div>
         </div>
     );

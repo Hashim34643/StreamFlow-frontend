@@ -27,6 +27,7 @@ const Live = () => {
         'Education'
     ];
     const sortOptions = [
+        { value: '', label: 'Select Sorting' },
         { value: 'viewCount', label: 'View Count' },
         { value: 'duration', label: 'Duration' },
     ];
@@ -71,11 +72,13 @@ const Live = () => {
                 return b.currentViewers - a.currentViewers;
             } else if (sortValue === 'duration') {
                 return b.streamDuration - a.streamDuration;
+            } else {
+                return b.currentViewers - a.currentViewers;
             }
         });
         setLiveStreams(sortedStreams);
     };
-    
+
 
     const filteredStreams = liveStreams.filter(stream => filterCategory === "" || stream.category === filterCategory);
 
@@ -98,7 +101,6 @@ const Live = () => {
                             </option>
                         ))}
                     </select>
-
                 </div>
                 <div className="stream-grid">
                     {filteredStreams.map((stream, index) => (

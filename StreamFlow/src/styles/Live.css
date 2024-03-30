@@ -136,3 +136,25 @@
     outline: none;
     border-color: #0056b3;
 }
+
+.stream-sort-dropdown {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.stream-sort-dropdown:hover {
+    border-color: #007bff;
+}
+
+.stream-sort-dropdown:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 2px rgba(0, 85, 179, 0.5);
+}
+
+

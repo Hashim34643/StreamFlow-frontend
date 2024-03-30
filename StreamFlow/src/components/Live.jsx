@@ -27,7 +27,7 @@ const Live = () => {
         'Education'
     ];
     const sortOptions = [
-        { value: '', label: 'Select Sorting' },
+        { value: '', label: 'Sort By' },
         { value: 'viewCount', label: 'View Count' },
         { value: 'duration', label: 'Duration' },
     ];

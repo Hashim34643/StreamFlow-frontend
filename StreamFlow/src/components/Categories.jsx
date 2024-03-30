@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import axios from 'axios';
 import '../styles/Categories.css';
 
 const CategoriesPage = () => {
+    const navigate = useNavigate();
     const [categories, setCategories] = useState([
         { name: 'Fortnite', image: 'https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2018/01/23/123820ee-354e-4af9-bd03-b29047d40292/fortnite-battle-royale-characters', viewers: 0 },
         { name: 'Minecraft', image: 'https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000964/811461b8d1cacf1f2da791b478dccfe2a55457780364c3d5a95fbfcdd4c3086f', viewers: 0 },
@@ -38,6 +40,10 @@ const CategoriesPage = () => {
             })
     }, []);
 
+    const handleCategoryClick = (categoryName) => {
+        navigate(`/live/${categoryName}`);
+    };
+
     return (
         <div>
             <Header />
@@ -45,7 +51,7 @@ const CategoriesPage = () => {
                 <h1 className="categories-title">Select a Category</h1>
                 <div className="grid-container">
                     {categories.map((category, index) => (
-                        <div key={index} className="category-card">
+                        <div key={index} className="category-card" onClick={() => handleCategoryClick(category.name)}>
                             <img src={category.image} alt={category.name} className="category-image" />
                             <div className="category-name">{category.name}</div>
                             <div className="viewer-count">{category.viewers} Viewers</div>

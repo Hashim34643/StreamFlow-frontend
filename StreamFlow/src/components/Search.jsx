@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "../styles/Search.css";
 
 const SearchComponent = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -18,19 +19,21 @@ const SearchComponent = () => {
     };
 
     return (
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSearch} className="search-form">
             <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search users or streams..."
+                className="search-input"
             />
-            <select value={searchType} onChange={(e) => setSearchType(e.target.value)}>
+            <select value={searchType} onChange={(e) => setSearchType(e.target.value)} className="search-select">
                 <option value="users">Users</option>
                 <option value="streams">Streams</option>
             </select>
-            <button type="submit">Search</button>
+            <button type="submit" className="search-button">Search</button>
         </form>
+
     );
 };
 

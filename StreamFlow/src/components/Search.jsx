@@ -12,7 +12,8 @@ const SearchComponent = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`https://streamflow-backend.onrender.com/search/${searchType}`, { searchTerm });
-            navigate(`/search-results/${searchType}`, { state: { results: response.data } });
+            console.log(response.data)
+            navigate(`/search-results?searchType=${searchType}`, { state: { searchResults: response.data, hasSearched: true } });
         } catch (error) {
             console.error("Error fetching search results:", error);
         }
@@ -33,8 +34,9 @@ const SearchComponent = () => {
             </select>
             <button type="submit" className="search-button">Search</button>
         </form>
-
     );
 };
 
 export default SearchComponent;
+
+

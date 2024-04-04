@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "../styles/Search.css";
@@ -71,6 +71,12 @@ const SearchComponent = () => {
             setHasSearched(false);
         }
     };
+
+    useEffect(() => {
+        setSearchTerm('');
+        setSearchResults([]);
+        setHasSearched(false);
+    }, [searchType]);
 
     return (
         <div className="live-streams-container">

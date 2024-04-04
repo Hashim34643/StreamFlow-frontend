@@ -115,7 +115,6 @@ const SearchComponent = () => {
                                             <Link to={`/user/${result._id}`} className="watch-stream-link">View User</Link>
                                         </div>
                                     </div>
-
                                 )}
                             </div>
                         ))}

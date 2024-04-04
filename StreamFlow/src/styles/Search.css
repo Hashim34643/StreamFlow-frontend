@@ -85,8 +85,9 @@
 .stream-info {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     flex-grow: 1;
+    position: relative;
 }
 
 .streamer-username {
@@ -113,5 +114,17 @@
 
 .watch-stream-link:hover {
     background-color: #0056b3;
+}
+
+.stream-viewer-countt {
+    position: absolute;
+    bottom: 10px; /* Adjust based on your design */
+    right: 15px; /* Adjust based on your design */
+    color: #666;
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: adds readability over thumbnails */
+    padding: 5px 10px;
+    border-radius: 15px; /* Optional: for rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds depth */
 }
 

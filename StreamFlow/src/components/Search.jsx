@@ -58,7 +58,6 @@ const SearchComponent = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`https://streamflow-backend.onrender.com/search/${searchType}`, { searchTerm });
-            console.log(response.data)
             if (searchType === 'users') {
                 setSearchResults(response.data.streamers);
             } else {
@@ -107,7 +106,7 @@ const SearchComponent = () => {
                                         <div className="stream-info">
                                             <h4 className="stream-title">{result.streamTitle}</h4>
                                             <p className="stream-description">{result.streamDescription}</p>
-                                            <div className="stream-viewer-count">Viewers: {result.currentViewers}</div>
+                                            <div className="stream-viewer-countt">Viewers: {result.currentViewers}</div>
                                             <Link to={`/stream/${result._id}`} className="watch-stream-link">Watch Stream</Link>
                                         </div>
                                     </>

@@ -116,7 +116,7 @@ const Live = () => {
                                     <div className="category-name">{stream.category}</div>
                                     <div className="watch-viewers-count">
                                         <Link to={`/stream/${stream._id}`} className="watch-stream-link">Watch Stream</Link>
-                                        <p className="stream-viewer-count">{stream.currentViewers} viewers</p>
+                                        <p className="stream-viewer-countt">{stream.currentViewers} viewers</p>
                                     </div>
                                 </div>
                             </div>

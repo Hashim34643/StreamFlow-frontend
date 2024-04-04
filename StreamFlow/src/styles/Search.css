@@ -51,3 +51,61 @@
 .search-button:hover {
     background-color: #0056b3;
 }
+
+.streamer-info-container {
+    display: flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: all 0.2s ease-in-out;
+}
+
+.streamer-info-container:hover {
+    transform: translateY(-5px);
+    background-color: #f0f0f0;
+}
+
+.streamer-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.stream-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex-grow: 1;
+}
+
+.streamer-username {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.followers-count {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.watch-stream-link {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.watch-stream-link:hover {
+    background-color: #0056b3;
+}
+

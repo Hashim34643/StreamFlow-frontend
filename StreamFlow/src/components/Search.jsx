@@ -26,7 +26,7 @@ const SearchComponent = () => {
     };
 
     return (
-        <>
+        <div className="live-streams-container">
             <form onSubmit={handleSearch} className="search-form">
                 <input
                     type="text"
@@ -42,35 +42,33 @@ const SearchComponent = () => {
                 <button type="submit" className="search-button">Search</button>
             </form>
             {hasSearched && (
-                <div className="search-results">
-                    {searchResults.length > 0 ? (
-                        <ul>
-                            {searchResults.map((result, index) => (
-                                <li key={index} className="result-item">
-                                    {searchType === 'users' ? (
-                                        <>
-                                            <img src={result.avatar} alt="Avatar" style={{ width: 50, borderRadius: '50%' }} />
-                                            <span>{result.username}</span>
-                                            <Link to={`/user/${result._id}`} className="view-user-btn">View User</Link>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <h4>{result.streamTitle}</h4>
-                                            <p>{result.streamDescription}</p>
-                                            <Link to={`/stream/${result._id}`} className="watch-stream-btn">Watch Stream</Link>
-                                        </>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    ) : (
-                        <p>No results found.</p>
-                    )}
+                <div>
+                    <h1 className="live-streams-title">{searchResults.length > 0 ? 'Search Results' : 'No Results Found'}</h1>
+                    <div className="stream-grid">
+                        {searchResults.map((result, index) => (
+                            <div key={index} className="stream-card">
+                                <div className="streamer-info-container">
+                                    <img src={result.avatar || result.streamThumbnail} alt="Avatar" className="streamer-avatar" />
+                                    <span className="streamer-username">{result.username || result.streamTitle}</span>
+                                </div>
+                                {searchType === 'streams' && (
+                                    <div className="stream-info">
+                                        <p className="stream-description">{result.streamDescription}</p>
+                                        <Link to={`/stream/${result._id}`} className="watch-stream-link">Watch Stream</Link>
+                                    </div>
+                                )}
+                                {searchType === 'users' && (
+                                    <Link to={`/user/${result._id}`} className="watch-stream-link">View User</Link>
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
 export default SearchComponent;
+
 

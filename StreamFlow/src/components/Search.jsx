@@ -58,6 +58,7 @@ const SearchComponent = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`https://streamflow-backend.onrender.com/search/${searchType}`, { searchTerm });
+            console.log(response.data)
             if (searchType === 'users') {
                 setSearchResults(response.data.streamers);
             } else {
@@ -92,21 +93,25 @@ const SearchComponent = () => {
                     <div className="stream-grid">
                         {searchResults.map((result, index) => (
                             <div key={index} className="stream-card">
-{searchType === 'streams' && (
-    <>
-        <img
-            src={categoryThumbnails[result.category] || 'default_thumbnail.jpg'}
-            alt={`${result.streamTitle} thumbnail`}
-            className="stream-thumbnail"
-        />
-        <div className="stream-info">
-            <h4 className="stream-title">{result.streamTitle}</h4>
-            <p className="stream-description">{result.streamDescription}</p>
-            <div className="stream-viewer-count">Viewers: {result.currentViewers}</div>
-            <Link to={`/stream/${result._id}`} className="watch-stream-link">Watch Stream</Link>
-        </div>
-    </>
-)}
+                                {searchType === 'streams' && (
+                                    <>
+                                        <div className="streamer-info-container">
+                                            <img src={result.streamerAvatar} alt="Streamer Avatar" className="streamer-avatar" />
+                                            <p className="streamer-username">{result.streamerUsername}</p>
+                                        </div>
+                                        <img
+                                            src={categoryThumbnails[result.category] || 'default_thumbnail.jpg'}
+                                            alt={`${result.streamTitle} thumbnail`}
+                                            className="stream-thumbnail"
+                                        />
+                                        <div className="stream-info">
+                                            <h4 className="stream-title">{result.streamTitle}</h4>
+                                            <p className="stream-description">{result.streamDescription}</p>
+                                            <div className="stream-viewer-count">Viewers: {result.currentViewers}</div>
+                                            <Link to={`/stream/${result._id}`} className="watch-stream-link">Watch Stream</Link>
+                                        </div>
+                                    </>
+                                )}
                                 {searchType === 'users' && (
                                     <div className="streamer-info-containerr">
                                         <img src={result.avatar} alt={`${result.username} avatar`} className="streamer-avatar" />

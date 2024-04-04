@@ -52,16 +52,24 @@
     background-color: #0056b3;
 }
 
-.streamer-info-container {
+.streamer-info-containerr {
     display: flex;
     align-items: center;
     background-color: #f8f8f8;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     transition: all 0.2s ease-in-out;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    margin-top: 0;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
 }
 
-.streamer-info-container:hover {
+.streamer-info-containerr:hover {
     transform: translateY(-5px);
     background-color: #f0f0f0;
 }
@@ -89,7 +97,7 @@
 
 .followers-count {
     font-size: 14px;
-    color: #666;
+    color: #ffffff;
     margin-bottom: 10px;
 }
 

@@ -107,7 +107,7 @@ const SearchComponent = () => {
                                     </>
                                 )}
                                 {searchType === 'users' && (
-                                    <div className="streamer-info-container">
+                                    <div className="streamer-info-containerr">
                                         <img src={result.avatar} alt={`${result.username} avatar`} className="streamer-avatar" />
                                         <div className="stream-info">
                                             <span className="streamer-username">{result.username}</span>

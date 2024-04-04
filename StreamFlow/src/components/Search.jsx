@@ -59,7 +59,8 @@ const SearchComponent = () => {
         try {
             const response = await axios.post(`https://streamflow-backend.onrender.com/search/${searchType}`, { searchTerm });
             if (searchType === 'users') {
-                setSearchResults(response.data.streamers);
+                const sortedUsers = response.data.streamers.sort((a, b) => b.followers.length - a.followers.length);
+                setSearchResults(sortedUsers);
             } else {
                 setSearchResults(response.data.streams);
             }

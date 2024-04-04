@@ -62,7 +62,8 @@ const SearchComponent = () => {
                 const sortedUsers = response.data.streamers.sort((a, b) => b.followers.length - a.followers.length);
                 setSearchResults(sortedUsers);
             } else {
-                setSearchResults(response.data.streams);
+                const sortedStreams = response.data.streams.sort((a, b) => b.currentViewers - a.currentViewers);
+                setSearchResults(sortedStreams);
             }
             setHasSearched(true);
         } catch (error) {

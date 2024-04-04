@@ -9,7 +9,6 @@ import Profile from "./components/Profile";
 import EditProfile from './components/Edit-profile';
 import CategoriesPage from './components/Categories';
 import LiveStreamsPage from './components/Live';
-import SearchResults from './components/Search-results';
 
 function App() {
 
@@ -27,7 +26,6 @@ function App() {
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/live" element={<LiveStreamsPage />} />
           <Route path="/live/:category" element={<LiveStreamsPage />} />
-          <Route path="/search-results" element={<SearchResults />} />
         </Routes>
       </Router>
     </>

@@ -6,7 +6,7 @@ import Header from './Header';
 
 const ViewProfile = () => {
     const { userId, streamerId } = useParams();
-    const [user, setUser] = useState({ followers: [], following: [], avatar: '', recentStreams: [] });
+    const [user, setUser] = useState({ followers: [], following: [], avatar: '', username: '', recentStreams: [] });
     const [isFollowing, setIsFollowing] = useState(false);
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const ViewProfile = () => {
                 };
 
                 const userProfileResponse = await axios.get(`https://streamflow-backend.onrender.com/user/${streamerId}`, config);
-                setUser(userProfileResponse.data);
+                setUser(userProfileResponse.data.user);
 
                 const isFollowingResponse = await axios.get(`https://streamflow-backend.onrender.com/${userId}/isFollowing/${streamerId}`, config);
                 setIsFollowing(isFollowingResponse.data.isFollowing);
@@ -51,7 +51,10 @@ const ViewProfile = () => {
             <Header />
             <div className="profile-page">
                 <div className="profile-content">
-                    <h2>{user.user.username || 'Username'}'s Profile</h2>
+                    <div className="user-avatar-container">
+                        <img src={user.avatar} alt={`${user.username}'s avatar`} className="user-avatar" />
+                    </div>
+                    <h2>{user.username || 'Username'}'s Profile</h2>
                     <div className="profile-stats">
                         <p>Followers: {user.followers?.length || 0}</p>
                         <p>Following: {user.following?.length || 0}</p>
@@ -66,4 +69,5 @@ const ViewProfile = () => {
 };
 
 export default ViewProfile;
+
 

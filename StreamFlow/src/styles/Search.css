@@ -118,13 +118,13 @@
 
 .stream-viewer-countt {
     position: absolute;
-    bottom: 10px; /* Adjust based on your design */
-    right: 15px; /* Adjust based on your design */
+    bottom: 10px;
+    right: 15px;
     color: #666;
     font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: adds readability over thumbnails */
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 5px 10px;
-    border-radius: 15px; /* Optional: for rounded corners */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds depth */
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 

@@ -50,17 +50,17 @@ const ViewProfile = () => {
     return (
         <>
             <Header />
-            <div className="profile-page">
-                <div className="profile-content">
-                    <div className="user-avatar-container">
-                        <img src={user.avatar} alt={`${user.username}'s avatar`} className="user-avatar" />
+            <div className="view-profile-page">
+                <div className="view-profile-content">
+                    <div className="view-profile-avatar-container">
+                        <img src={user.avatar} alt={`${user.username}'s avatar`} className="view-profile-user-avatar" />
                     </div>
-                    <h2>{user.username || 'Username'}'s Profile</h2>
-                    <div className="profile-stats">
-                        <p>Followers: {user.followers?.length || 0}</p>
-                        <p>Following: {user.following?.length || 0}</p>
+                    <h2 className="view-profile-username">{user.username || 'Username'}'s Profile</h2>
+                    <div className="view-profile-stats">
+                        <p className="view-profile-followers">Followers: {user.followers?.length || 0}</p>
+                        <p className="view-profile-following">Following: {user.following?.length || 0}</p>
                     </div>
-                    <button onClick={handleFollowUnfollow} className="follow-unfollow-btn">
+                    <button onClick={handleFollowUnfollow} className="view-profile-follow-unfollow-btn">
                         {isFollowing ? 'Unfollow' : 'Follow'}
                     </button>
                 </div>

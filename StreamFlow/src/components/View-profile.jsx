@@ -42,8 +42,16 @@ const ViewProfile = () => {
         try {
             if (isFollowing) {
                 await axios.post(`https://streamflow-backend.onrender.com/${userId}/unfollow/${streamerId}`, {}, config);
+                setUser(prevUser => ({
+                    ...prevUser,
+                    followers: prevUser.followers.filter(followerId => followerId !== userId)
+                }));
             } else {
                 await axios.post(`https://streamflow-backend.onrender.com/${userId}/follow/${streamerId}`, {}, config);
+                setUser(prevUser => ({
+                    ...prevUser,
+                    followers: [...prevUser.followers, userId]
+                }));
             }
             setIsFollowing(!isFollowing);
         } catch (error) {

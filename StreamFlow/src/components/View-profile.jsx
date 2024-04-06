@@ -12,6 +12,7 @@ const ViewProfile = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        document.body.classList.add('view-profile-page-background');
         const fetchUserProfileAndStreams = async () => {
             try {
                 const config = {
@@ -29,6 +30,9 @@ const ViewProfile = () => {
         };
 
         fetchUserProfileAndStreams();
+        return () => {
+            document.body.classList.remove('view-profile-page-background');
+        };
     }, [userId, streamerId]);
 
     const handleFollowUnfollow = async () => {

@@ -1,3 +1,11 @@
+.view-profile-page-background {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 .view-profile-content {
     width: 500px;
     min-height: 300px;

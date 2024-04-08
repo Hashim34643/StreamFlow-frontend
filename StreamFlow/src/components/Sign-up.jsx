@@ -3,8 +3,10 @@ import "../styles/Sign-up.css";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         firstName: '',
@@ -42,6 +44,9 @@ const SignUpForm = () => {
             if (response.data.success === true) {
                 setSuccessMessage('Account created successfully! Please login.');
                 setErrorMessage('');
+                setTimeout(() => {
+                    navigate("/login");
+                }, 2000);    
             } else {
                 throw new Error('Something went wrong');
             }

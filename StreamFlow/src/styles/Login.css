@@ -76,3 +76,14 @@ html, body {
     color: green;
   }
   
+  .sign-up-link {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.sign-up-link:hover {
+    text-decoration: underline;
+}

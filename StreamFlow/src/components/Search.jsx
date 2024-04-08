@@ -89,7 +89,7 @@ const SearchComponent = () => {
             } else {
                 const sortedStreams = response.data.streams.sort((a, b) => b.currentViewers - a.currentViewers);
                 setSearchResults(sortedStreams);
-            }
+            };
             setHasSearched(true);
         } catch (error) {
             console.error("Error fetching search results:", error);

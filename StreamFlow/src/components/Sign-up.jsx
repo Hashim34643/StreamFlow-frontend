@@ -74,6 +74,9 @@ const SignUpForm = () => {
                 <h2>Sign-Up</h2>
                 {successMessage && <div className="success-message">{successMessage}</div>}
                 {errorMessage && <div className="error-message">{errorMessage}</div>}
+                <div className="return-to-login-container">
+                <Link to="/login" className="signup-link">Already have an account? Return to Login</Link>
+            </div>
                 <div className="form-group">
                     <label htmlFor='username'>Username:<span className="required-asterisk">*</span></label>
                     <input type="text" id='username' name='username' value={formData.username} onChange={handleChange} required />
@@ -120,9 +123,6 @@ const SignUpForm = () => {
                 </div>
                 <button type='submit' className='submit-btn'>Sign Up</button>
             </form>
-            <div className="return-to-login-container">
-                <Link to="/login" className="signup-link">Return to Login</Link>
-            </div>
         </div>
     );
 }

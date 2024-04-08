@@ -120,7 +120,9 @@ const SignUpForm = () => {
                 </div>
                 <button type='submit' className='submit-btn'>Sign Up</button>
             </form>
-            <Link to="/login">Return to Login</Link>
+            <div className="return-to-login-container">
+                <Link to="/login" className="signup-link">Return to Login</Link>
+            </div>
         </div>
     );
 }

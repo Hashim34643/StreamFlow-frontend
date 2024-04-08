@@ -73,6 +73,12 @@ const SearchComponent = () => {
         fetchUserProfile();
     }, []);
 
+    useEffect(() => {
+        setSearchTerm('');
+        setSearchResults([]);
+        setHasSearched(false);
+    }, [searchType]);
+
     const handleSearch = async (e) => {
         e.preventDefault();
         try {

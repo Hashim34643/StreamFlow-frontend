@@ -3,7 +3,7 @@ import "../styles/Sign-up.css";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const SignUpForm = () => {
     const navigate = useNavigate();
@@ -120,6 +120,7 @@ const SignUpForm = () => {
                 </div>
                 <button type='submit' className='submit-btn'>Sign Up</button>
             </form>
+            <Link to="/login">Return to Login</Link>
         </div>
     );
 }

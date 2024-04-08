@@ -50,6 +50,7 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit} className="login-form">
                 <h2>Login</h2>
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
+                <Link to="/sign-up">Don't have an account? Sign up here!</Link>
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input

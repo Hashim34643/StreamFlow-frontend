@@ -15,6 +15,7 @@ const SignUpForm = () => {
         password: '',
         confirmPassword: '',
         isStreamer: false,
+        avatar: '',
         showPassword: false
     });
     const [successMessage, setSuccessMessage] = useState('');
@@ -105,6 +106,10 @@ const SignUpForm = () => {
                     <div className="password-container">
                     <input type={formData.showPassword ? 'text' : 'password'} id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} required />
                     </div>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="avatar">Avatar URL:</label>
+                    <input type="text" id="avatar" name="avatar" value={formData.avatar} onChange={handleChange} />
                 </div>
                 <div className="form-group switch-container">
                     <span>Streamer?</span>

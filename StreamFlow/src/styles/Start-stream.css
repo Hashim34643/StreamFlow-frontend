@@ -1,0 +1,82 @@
+.start-stream-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .start-stream-container h2 {
+    color: #203a43;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .start-stream-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .start-stream-container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .start-stream-container input[type="text"],
+  .start-stream-container select,
+  .start-stream-container textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .start-stream-container textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .start-stream-container button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .start-stream-container button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .not-streamer-message {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffc107;
+    color: #333;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .not-streamer-message button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .not-streamer-message button:hover {
+    background-color: #0056b3;
+  }
+  

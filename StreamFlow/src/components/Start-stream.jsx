@@ -65,6 +65,10 @@ const StartStream = () => {
             });
     };
 
+    const handleCancel = () => {
+        navigate("/");
+    };
+
     if (!isStreamer) {
         return (
             <div className="not-streamer-message">
@@ -104,6 +108,7 @@ const StartStream = () => {
                     <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 <button type="submit">Start Streaming</button>
+                <button type="button" onClick={handleCancel}>Cancel</button>
             </form>
         </div>
     );

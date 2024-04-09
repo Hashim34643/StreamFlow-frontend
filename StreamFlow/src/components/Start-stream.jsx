@@ -108,7 +108,7 @@ const StartStream = () => {
                     <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 <button type="submit">Start Streaming</button>
-                <button type="button" onClick={handleCancel}>Cancel</button>
+                <button type="button" onClick={handleCancel} className='cancel-button'>Cancel</button>
             </form>
         </div>
     );

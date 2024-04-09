@@ -26,15 +26,20 @@ const StartStream = () => {
             .then(response => {
                 setIsStreamer(response.data.user.isStreamer);
                 setUserId(response.data.user._id);
-                if (response.data.isStreamer) {
+                if (response.data.user.isStreamer) {
                     navigator.mediaDevices.getUserMedia({ video: true })
-                        .then(stream => {
-                            if (videoRef.current) {
-                                videoRef.current.srcObject = stream;
+                        .then((stream) => {
+                            console.log("Stream obtained from user media");
+                            const video = videoRef.current;
+                            if (video) {
+                                video.srcObject = stream;
+                                console.log("Video srcObject set with stream");
+                            } else {
+                                console.error("Video element ref is null");
                             }
                         })
-                        .catch(error => {
-                            console.error("Error accessing the device camera:", error);
+                        .catch((err) => {
+                            console.error('Error accessing the camera:', err);
                         });
                 }
             })

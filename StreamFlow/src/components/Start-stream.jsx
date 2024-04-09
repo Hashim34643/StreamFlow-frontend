@@ -29,11 +29,9 @@ const StartStream = () => {
                 if (response.data.user.isStreamer) {
                     navigator.mediaDevices.getUserMedia({ video: true })
                         .then((stream) => {
-                            console.log("Stream obtained from user media");
                             const video = videoRef.current;
                             if (video) {
                                 video.srcObject = stream;
-                                console.log("Video srcObject set with stream");
                             } else {
                                 console.error("Video element ref is null");
                             }

@@ -7,7 +7,7 @@ const StartStream = () => {
     const [category, setCategory] = useState('Fortnite');
     const [description, setDescription] = useState('');
     const [isStreamer, setIsStreamer] = useState(false);
-    const [userId, setUserId] = useState(null);
+    const [userId, setUserId] = useState("");
     const videoRef = useRef(null);
     const navigate = useNavigate();
 

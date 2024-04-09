@@ -7,6 +7,7 @@ const StartStream = () => {
     const [category, setCategory] = useState('Fortnite');
     const [description, setDescription] = useState('');
     const [isStreamer, setIsStreamer] = useState(false);
+    const [userId, setUserId] = useState(null);
     const videoRef = useRef(null);
     const navigate = useNavigate();
 
@@ -22,7 +23,8 @@ const StartStream = () => {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then(response => {
-                setIsStreamer(response.data.isStreamer);
+                setIsStreamer(response.data.user.isStreamer);
+                setUserId(response.data.user._id);
                 if (response.data.isStreamer) {
                     navigator.mediaDevices.getUserMedia({ video: true })
                         .then(stream => {

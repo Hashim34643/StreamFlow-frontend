@@ -35,8 +35,6 @@ const StartStream = () => {
                         .catch(error => {
                             console.error("Error accessing the device camera:", error);
                         });
-                } else {
-                    alert("You need to be marked as a streamer to start a stream.");
                 }
             })
             .catch(error => {

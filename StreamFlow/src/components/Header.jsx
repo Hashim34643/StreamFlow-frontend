@@ -38,7 +38,7 @@ const Header = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/live">Live</Link></li>
                     <li><Link to="/categories">Categories</Link></li>
-                    <li><Link to="/start-stream">Start Streaming</Link></li>
+                    <li><Link to="/?startStreaming=true">Start Streaming</Link></li>
                 </ul>
             </nav>
             <div className="profile">

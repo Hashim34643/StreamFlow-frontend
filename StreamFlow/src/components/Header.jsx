@@ -7,27 +7,26 @@ const Header = () => {
     const [userAvatar, setUserAvatar] = useState('');
 
     useEffect(() => {
-      const fetchUserAvatar = async () => {
-          const config = {
-              headers: {
-                  Authorization: `Bearer ${localStorage.getItem('token')}`,
-              },
-          };
-  
-          try {
-              const response = await axios.get('https://streamflow-backend.onrender.com/profile', config);
-              if (response.data.user.avatar) {
-                  const avatarDataUrl = `${response.data.user.avatar}`;
-                  setUserAvatar(avatarDataUrl);
-              }
-          } catch (error) {
-              console.error("Error fetching user's avatar:", error);
-          }
-      };
-  
-      fetchUserAvatar();
-  }, []);
-  
+        const fetchUserAvatar = async () => {
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+            };
+
+            try {
+                const response = await axios.get('https://streamflow-backend.onrender.com/profile', config);
+                if (response.data.user.avatar) {
+                    const avatarDataUrl = `${response.data.user.avatar}`;
+                    setUserAvatar(avatarDataUrl);
+                }
+            } catch (error) {
+                console.error("Error fetching user's avatar:", error);
+            }
+        };
+
+        fetchUserAvatar();
+    }, []);
 
     return (
         <header className="header">
@@ -39,6 +38,7 @@ const Header = () => {
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/live">Live</Link></li>
                     <li><Link to="/categories">Categories</Link></li>
+                    <li><Link to="/start-stream">Start Streaming</Link></li>
                 </ul>
             </nav>
             <div className="profile">
@@ -51,5 +51,6 @@ const Header = () => {
 };
 
 export default Header;
+
 
 

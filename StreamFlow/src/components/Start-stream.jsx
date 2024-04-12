@@ -15,7 +15,7 @@ const StartStream = () => {
     const videoRef = useRef(null);
     const navigate = useNavigate();
 
-    const { startStream } = useWebRTC(videoRef);
+    const { startStream, createOffer, createAnswer, addCandidate } = useWebRTC(videoRef);
     const { sendMessage, isConnected } = useWebSocket('wss://streamflow-backend.onrender.com', handleMessage);
 
     const handleMessage = (message) => {

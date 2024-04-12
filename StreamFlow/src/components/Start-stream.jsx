@@ -134,6 +134,7 @@ const StartStream = () => {
                 navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 .then((stream) => {
                     startStream(stream);
+                    navigate('/manage-stream');
                 })
                 .catch((err) => {
                     console.error('Error accessing the camera:', err);
@@ -142,7 +143,6 @@ const StartStream = () => {
         })
         .catch(error => {
             console.error('Failed to fetch user data:', error);
-            navigate('/login');
         });
     }, [navigate, startStream]);
 

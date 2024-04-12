@@ -10,6 +10,7 @@ import EditProfile from './components/Edit-profile';
 import CategoriesPage from './components/Categories';
 import LiveStreamsPage from './components/Live';
 import ViewProfile from './components/View-profile';
+import ManageStream from './components/manage-stream';
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/live" element={<LiveStreamsPage />} />
           <Route path="/live/:category" element={<LiveStreamsPage />} />
           <Route path="/:userId/user-profile/:streamerId" element={<ViewProfile />} />
+          <Route path="/manage-stream" element={<ManageStream />} />
         </Routes>
       </Router>
     </>

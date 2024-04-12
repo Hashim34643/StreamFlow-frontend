@@ -32,6 +32,11 @@ const Live = () => {
         { value: 'duration', label: 'Duration' },
     ];
 
+    const [isHovered, setIsHovered] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
+
+    const hoverStyle = isHovered ? { borderColor: '#007bff' } : {};
+    const focusStyle = isFocused ? { outline: 'none', borderColor: '#0056b3' } : {};
 
     const categoryThumbnails = {
         "Fortnite": "https://www.gamespot.com/a/uploads/screen_kubrick/1352/13527689/3928496-fortnite2022-01-1808-32-56.00_01_08_23.still001.jpg",
@@ -89,7 +94,21 @@ const Live = () => {
             <div className="live-streams-container">
                 <h1 className="live-streams-title">Live Streams</h1>
                 <div className="filter-container">
-                    <select onChange={handleCategoryChange} value={filterCategory} className="stream-filter-dropdown">
+                    <select onChange={handleCategoryChange} className="stream-filter-dropdown" value={filterCategory} style={{
+                        padding: '8px 12px',
+                        borderRadius: '5px',
+                        border: '1px solid #ccc',
+                        backgroundColor: 'white',
+                        cursor: 'pointer',
+                        marginBottom: '20px',
+                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                        ...hoverStyle,
+                        ...focusStyle
+                    }}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                        onFocus={() => setIsFocused(true)}
+                        onBlur={() => setIsFocused(false)}>
                         {categories.map(category => (
                             <option key={category} value={category}>{category}</option>
                         ))}

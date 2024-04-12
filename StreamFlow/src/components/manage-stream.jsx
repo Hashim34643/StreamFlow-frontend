@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import useWebRTC from '../hooks/useWebRTC';
-import useWebSocket from '../hooks/useWebSocket';
+import useWebRTC from '../hooks/UseWebRtc';
+import useWebSocket from '../hooks/UseWebSocket';
 
 const ManageStream = () => {
     const videoRef = useRef(null);
@@ -19,14 +19,12 @@ const ManageStream = () => {
             return;
         }
 
-        // Fetch the user profile to get the user ID
         axios.get('https://streamflow-backend.onrender.com/profile', {
             headers: { Authorization: `Bearer ${token}` }
         }).then(response => {
             const userId = response.data.user._id;
             setUserId(userId);
 
-            // Fetch all streams for the user
             return axios.get(`https://streamflow-backend.onrender.com/${userId}/streams`, {
                 headers: { Authorization: `Bearer ${token}` }
             });

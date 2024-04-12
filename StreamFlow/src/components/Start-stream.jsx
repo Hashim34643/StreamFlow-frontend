@@ -14,10 +14,7 @@ const StartStream = () => {
     const [userId, setUserId] = useState("");
     const videoRef = useRef(null);
     const navigate = useNavigate();
-
-    const { startStream, createOffer, createAnswer, addCandidate } = useWebRTC(videoRef);
-    const { sendMessage, isConnected } = useWebSocket('wss://streamflow-backend.onrender.com', handleMessage);
-
+    
     const handleMessage = (message) => {
         const parsedMessage = JSON.parse(message.data);
     
@@ -28,34 +25,34 @@ const StartStream = () => {
             case 'answer':
                 handleAnswer(parsedMessage.answer);
                 break;
-            case 'candidate':
-                handleCandidate(parsedMessage.candidate);
-                break;
+                case 'candidate':
+                    handleCandidate(parsedMessage.candidate);
+                    break;
             case 'chat':
                 displayChatMessage(parsedMessage.content, parsedMessage.sender);
                 break;
-            case 'notification':
+                case 'notification':
                 showNotification(parsedMessage.content);
                 break;
             case 'control':
                 handleStreamControl(parsedMessage.action);
                 break;
-            case 'status':
-                updateStreamStatus(parsedMessage.status);
-                break;
-            default:
-                console.log("Received unknown message type:", parsedMessage.type);
-        }
-    };
-    
-    
-    function handleOffer(offer) {
-        peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-        createAndSendAnswer();
-    }
-    
-    function handleAnswer(answer) {
-        peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+                case 'status':
+                    updateStreamStatus(parsedMessage.status);
+                    break;
+                    default:
+                        console.log("Received unknown message type:", parsedMessage.type);
+                    }
+                };
+                
+                
+                function handleOffer(offer) {
+                    peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+                    createAndSendAnswer();
+                }
+                
+                function handleAnswer(answer) {
+                    peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
     }
     
     function handleCandidate(candidate) {
@@ -87,7 +84,7 @@ const StartStream = () => {
             case 'stop':
                 stopStream();
                 break;
-        }
+            }
     }
     
     function updateStreamStatus(status) {
@@ -115,7 +112,9 @@ const StartStream = () => {
         videoRef.current.srcObject.getTracks().forEach(track => track.stop());
     }
     
-
+    const { startStream, createOffer, createAnswer, addCandidate } = useWebRTC(videoRef);
+    const { sendMessage, isConnected } = useWebSocket('wss://streamflow-backend.onrender.com', handleMessage);
+    
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -123,7 +122,7 @@ const StartStream = () => {
             navigate('/login');
             return;
         }
-
+        
         axios.get('https://streamflow-backend.onrender.com/profile', {
             headers: { Authorization: `Bearer ${token}` },
         })

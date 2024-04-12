@@ -9,9 +9,7 @@ const ManageStream = () => {
     const [userId, setUserId] = useState(null);
     const [chatMessages, setChatMessages] = useState([]);
 
-    const { startStream } = useWebRTC(videoRef);
-    const { sendMessage, isConnected } = useWebSocket(`wss://streamflow-backend.onrender.com/${stream?.id}`, handleMessage);
-
+    
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
@@ -24,7 +22,7 @@ const ManageStream = () => {
         }).then(response => {
             const userId = response.data.user._id;
             setUserId(userId);
-
+            
             return axios.get(`https://streamflow-backend.onrender.com/${userId}/streams`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
@@ -39,18 +37,20 @@ const ManageStream = () => {
             console.error('Failed to fetch user or streams:', error);
         });
     }, []);
-
+    
     const handleMessage = (message) => {
         const data = JSON.parse(message.data);
         if (data.type === 'chat') {
             setChatMessages(prevMessages => [...prevMessages, data.message]);
         }
     };
-
+    const { startStream } = useWebRTC(videoRef);
+    const { sendMessage, isConnected } = useWebSocket(`wss://streamflow-backend.onrender.com/${stream?.id}`, handleMessage);
+    
     if (!stream) {
         return <div>Loading or no active stream found...</div>;
     }
-
+    
     return (
         <div className="manage-stream-container">
             <h1>Manage Your Stream</h1>

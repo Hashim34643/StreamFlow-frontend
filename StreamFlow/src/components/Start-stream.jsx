@@ -63,7 +63,7 @@ const StartStream = () => {
                 navigate(`/stream/${response.data.streamId}`);
             })
             .catch(error => {
-                console.error('Error starting stream:', error.response.data.message);
+                console.error('Error starting stream:', error.message);
                 alert('Failed to start stream. Please try again.');
             });
     };
@@ -104,6 +104,7 @@ const StartStream = () => {
                         <option value="Among Us">Among Us</option>
                         <option value="Tom Clancys Rainbow Six Siege">Tom Clancy's Rainbow Six Siege</option>
                         <option value="Call Of Duty: Modern Warfare III">Call Of Duty: Modern Warfare III</option>
+                        <option value="Education">Education</option>
                     </select>
                 </div>
                 <div>

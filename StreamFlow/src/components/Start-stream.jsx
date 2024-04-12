@@ -18,6 +18,104 @@ const StartStream = () => {
     const { startStream } = useWebRTC(videoRef);
     const { sendMessage, isConnected } = useWebSocket('wss://streamflow-backend.onrender.com', handleMessage);
 
+    const handleMessage = (message) => {
+        const parsedMessage = JSON.parse(message.data);
+    
+        switch(parsedMessage.type) {
+            case 'offer':
+                handleOffer(parsedMessage.offer);
+                break;
+            case 'answer':
+                handleAnswer(parsedMessage.answer);
+                break;
+            case 'candidate':
+                handleCandidate(parsedMessage.candidate);
+                break;
+            case 'chat':
+                displayChatMessage(parsedMessage.content, parsedMessage.sender);
+                break;
+            case 'notification':
+                showNotification(parsedMessage.content);
+                break;
+            case 'control':
+                handleStreamControl(parsedMessage.action);
+                break;
+            case 'status':
+                updateStreamStatus(parsedMessage.status);
+                break;
+            default:
+                console.log("Received unknown message type:", parsedMessage.type);
+        }
+    };
+    
+    
+    function handleOffer(offer) {
+        peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+        createAndSendAnswer();
+    }
+    
+    function handleAnswer(answer) {
+        peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+    }
+    
+    function handleCandidate(candidate) {
+        peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+    }
+    
+    function displayChatMessage(content, sender) {
+        const chatArea = document.getElementById('chat-area');
+        const messageElement = document.createElement('p');
+        messageElement.textContent = `${sender}: ${content}`;
+        chatArea.appendChild(messageElement);
+    }
+    
+    function showNotification(content) {
+        const notificationArea = document.getElementById('notifications');
+        const notificationElement = document.createElement('p');
+        notificationElement.textContent = content;
+        notificationArea.appendChild(notificationElement);
+    }
+    
+    function handleStreamControl(action) {
+        switch(action) {
+            case 'pause':
+                pauseStream();
+                break;
+            case 'resume':
+                resumeStream();
+                break;
+            case 'stop':
+                stopStream();
+                break;
+        }
+    }
+    
+    function updateStreamStatus(status) {
+        const statusElement = document.getElementById('stream-status');
+        statusElement.textContent = status;
+    }
+    
+    function pauseStream() {
+        videoRef.current.srcObject.getTracks().forEach(track => {
+            if(track.kind === 'video') {
+                track.enabled = false;
+            }
+        });
+    }
+    
+    function resumeStream() {
+        videoRef.current.srcObject.getTracks().forEach(track => {
+            if(track.kind === 'video') {
+                track.enabled = true;
+            }
+        });
+    }
+    
+    function stopStream() {
+        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
+    }
+    
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {

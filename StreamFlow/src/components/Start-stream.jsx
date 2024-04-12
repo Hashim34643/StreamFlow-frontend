@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../styles/Start-stream.css";
-import useWebRTC from '../hooks/useWebRTC';
-import useWebSocket from '../hooks/useWebSocket';
+import useWebRTC from '../hooks/UseWebRtc';
+import useWebSocket from '../hooks/UseWebSocket';
 
 
 const StartStream = () => {

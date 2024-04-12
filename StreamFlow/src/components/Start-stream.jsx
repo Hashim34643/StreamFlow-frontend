@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../styles/Start-stream.css";
+import useWebRTC from '../hooks/useWebRTC';
+import useWebSocket from '../hooks/useWebSocket';
+
 
 const StartStream = () => {
     const [streamTitle, setStreamTitle] = useState('');
@@ -11,6 +14,9 @@ const StartStream = () => {
     const [userId, setUserId] = useState("");
     const videoRef = useRef(null);
     const navigate = useNavigate();
+
+    const { startStream } = useWebRTC(videoRef);
+    const { sendMessage, isConnected } = useWebSocket('wss://streamflow-backend.onrender.com', handleMessage);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -23,29 +29,24 @@ const StartStream = () => {
         axios.get('https://streamflow-backend.onrender.com/profile', {
             headers: { Authorization: `Bearer ${token}` },
         })
-            .then(response => {
-                setIsStreamer(response.data.user.isStreamer);
-                setUserId(response.data.user._id);
-                if (response.data.user.isStreamer) {
-                    navigator.mediaDevices.getUserMedia({ video: true })
-                        .then((stream) => {
-                            const video = videoRef.current;
-                            if (video) {
-                                video.srcObject = stream;
-                            } else {
-                                console.error("Video element ref is null");
-                            }
-                        })
-                        .catch((err) => {
-                            console.error('Error accessing the camera:', err);
-                        });
-                }
-            })
-            .catch(error => {
-                console.error('Failed to fetch user data:', error);
-                navigate('/login');
-            });
-    }, [navigate]);
+        .then(response => {
+            setIsStreamer(response.data.user.isStreamer);
+            setUserId(response.data.user._id);
+            if (response.data.user.isStreamer) {
+                navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then((stream) => {
+                    startStream(stream);
+                })
+                .catch((err) => {
+                    console.error('Error accessing the camera:', err);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Failed to fetch user data:', error);
+            navigate('/login');
+        });
+    }, [navigate, startStream]);
 
     const handleStartStream = async (e) => {
         e.preventDefault();
@@ -58,14 +59,14 @@ const StartStream = () => {
         }, {
             headers: { Authorization: `Bearer ${token}` },
         })
-            .then(response => {
-                alert('Stream started successfully!');
-                navigate(`/stream/${response.data.streamId}`);
-            })
-            .catch(error => {
-                console.error('Error starting stream:', error.message);
-                alert('Failed to start stream. Please try again.');
-            });
+        .then(response => {
+            alert('Stream started successfully!');
+            navigate(`/stream/${response.data.streamId}`);
+        })
+        .catch(error => {
+            console.error('Error starting stream:', error.message);
+            alert('Failed to start stream. Please try again.');
+        });
     };
 
     const handleCancel = () => {

@@ -113,7 +113,7 @@ const StartStream = () => {
     }
     
     const { startStream, createOffer, createAnswer, addCandidate } = useWebRTC(videoRef);
-    const { sendMessage, isConnected } = useWebSocket('wss://streamflow-backend.onrender.com/ws', handleMessage);
+    const { sendMessage, isConnected } = useWebSocket('wss://streamflow-backend.onrender.com', handleMessage);
     
     useEffect(() => {
         const token = localStorage.getItem('token');
